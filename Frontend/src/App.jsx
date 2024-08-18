@@ -1,15 +1,19 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useSearchParams } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Placeorder from "./pages/Placeorder/Placeorder";
 import Cart from "./pages/Cart/Cart";
 import Footer from "./components/Footer/Footer";
+import { useState } from "react";
+import LoginPopUp from "./components/LoginPopUp/LoginPopUp";
 
 const App = () => {
+  const [showLogin, setshowLogin] = useState(false);
   return (
     <>
+      {showLogin ? <LoginPopUp setshowLogin={setshowLogin} /> : <></>}
       <div className="app">
-        <Navbar />
+        <Navbar setshowLogin={setshowLogin} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Cart />} />

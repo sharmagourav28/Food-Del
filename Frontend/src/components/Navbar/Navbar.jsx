@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import searchicon from "../../assets/search_icon.png";
 import basketicon from "../../assets/basket_icon.png";
 import { useState } from "react";
-const Navbar = () => {
+const Navbar = ({ setshowLogin }) => {
   const [menu, setmenu] = useState("home");
   return (
     <div className="navbar">
@@ -40,7 +40,7 @@ const Navbar = () => {
           <img src={basketicon} alt="basket_icon" />
           <div className="dot"></div>
         </div>
-        <button>sign in</button>
+        <button onClick={() => setshowLogin(true)}>sign in</button>
       </div>
     </div>
   );
