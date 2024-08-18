@@ -1,7 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Placeorder.css";
+import { StoreContext } from "../../context/StoreContext";
 const Placeorder = () => {
-  return <div></div>;
+  const { getTotalCartAmount } = useContext(StoreContext);
+  return (
+    <form className="place-order">
+      <div className="place-order-left">
+        <p className="title">Deivery Informations</p>
+        <div className="mutifileds">
+          <input type="text" placeholder="First Name" />
+          <input type="text" placeholder="Last Name" />
+        </div>
+        <input type="email" placeholder="Email" />
+        <input type="text" placeholder="Street" />
+
+        <div className="mutifileds">
+          <input type="text" placeholder="City" />
+          <input type="text" placeholder="State" />
+        </div>
+        <div className="mutifileds">
+          <input type="text" placeholder="Zip Code" />
+          <input type="text" placeholder="Country" />
+        </div>
+        <input type="text" placeholder="phone" />
+      </div>
+      <div className="place-order-right">
+        <div className="cart-total">
+          <h2>Cart Total</h2>
+          <div>
+            <div className="cart-total-details">
+              <p>SubTotal</p>
+              <p>{getTotalCartAmount()}</p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
+              <p>Delivery fee</p>
+              <p>Rs.{getTotalCartAmount() === 0 ? 0 : 50}</p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
+              <b>Total</b>
+              <b>
+                Rs. {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 50}
+              </b>
+            </div>
+          </div>
+          <button>Proceed To Payment</button>
+        </div>
+      </div>
+    </form>
+  );
 };
 
 export default Placeorder;
