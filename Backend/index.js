@@ -1,9 +1,11 @@
 import express from "express";
 import connectDB from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js";
+import cors from "cors";
 
 const app = express();
 const PORT = 7000;
+app.use(cors());
 
 app.use(express.json());
 connectDB();
