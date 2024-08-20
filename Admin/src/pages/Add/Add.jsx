@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Add.css";
 import { assets } from "../../assets/assets";
 import axios from "axios";
+import { toast } from "react-toastify";
+
 const Add = () => {
   const url = "http://localhost:7000";
   const [image, setImage] = useState(null);
@@ -36,7 +38,7 @@ const Add = () => {
     if (response.data.success) {
       setData({ name: "", description: "", price: "", category: "salad" });
       setImage(false);
-      console.log("image Uploaded");
+      toast.success(response.data.message);
     } else {
     }
   };
