@@ -22,7 +22,7 @@ const LoginPopUp = ({ setshowLogin }) => {
     event.preventDefault();
 
     let newUrl = url;
-    if (currentState === "Login") {
+    if (currentState === "login") {
       newUrl += "/api/user/login";
     } else {
       newUrl += "/api/user/register";
@@ -43,9 +43,9 @@ const LoginPopUp = ({ setshowLogin }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   return (
     <div className="login-popup">
