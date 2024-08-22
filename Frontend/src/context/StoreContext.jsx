@@ -7,13 +7,21 @@ const StoreContextProvider = (props) => {
   const url = "http://localhost:7000";
   const [token, setToken] = useState("");
   const [food_list, setfood_list] = useState([]); //backend se frontend data dekhna
-  const addTocart = (itemId) => {
+  const addTocart = async (itemId) => {
     if (!cartItems[itemId]) {
       setcardItems((prev) => ({ ...prev, [itemId]: 1 }));
       // kabhi add to cart m kuch nhi h to vo 1 kardega
     } else {
       setcardItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
       //  kabhi kuch select karka rakha h to increase kardega
+    }
+
+    if (token) {
+      await axios.post(
+        url + "/api/cart/add",
+        { itemId },
+        { headers: { token } }
+      );
     }
   };
 

@@ -3,7 +3,6 @@ import "./LoginPopUp.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
-
 const LoginPopUp = ({ setshowLogin }) => {
   const { url, setToken, token } = useContext(StoreContext);
   const [currentState, setcurrentState] = useState("sign up");
@@ -21,15 +20,20 @@ const LoginPopUp = ({ setshowLogin }) => {
 
   const onLogin = async (event) => {
     event.preventDefault();
+
     let newUrl = url;
     if (currentState === "Login") {
       newUrl += "/api/user/login";
     } else {
       newUrl += "/api/user/register";
     }
+    console.log(newUrl);
 
+    // const response = await axios.post(newUrl, data);
     const response = await axios.post(newUrl, data);
-    console.log("error");
+    console.log(response);
+    console.log(newUrl);
+
     if (response.data.success) {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
