@@ -8,8 +8,13 @@ import cartRouter from "./routes/cartRoute.js";
 
 const app = express();
 const PORT = 7000;
-app.use(cors());
 
+const corsConfig = {
+	origin: "*",
+	Credential: true,
+	methods: ["GET", "POST", "PUT", "DELETE"],
+};
+app.use(cors(corsConfig));
 app.use(express.json());
 connectDB();
 
