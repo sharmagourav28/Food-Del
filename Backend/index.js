@@ -14,6 +14,7 @@ const corsConfig = {
 	Credential: true,
 	methods: ["GET", "POST", "PUT", "DELETE"],
 };
+app.options("", cors(corsConfig));
 app.use(cors(corsConfig));
 app.use(express.json());
 connectDB();
