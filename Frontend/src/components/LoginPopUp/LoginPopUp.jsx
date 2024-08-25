@@ -21,6 +21,7 @@ const LoginPopUp = ({ setshowLogin }) => {
 	const onLogin = async (event) => {
 		event.preventDefault();
 
+
 		let newUrl = url;
 		if (currentState === "login") {
 			newUrl += "/api/user/login";
@@ -28,6 +29,7 @@ const LoginPopUp = ({ setshowLogin }) => {
 			newUrl += "/api/user/register";
 		}
 		console.log(newUrl);
+
 
 		// const response = await axios.post(newUrl, data);
 		const response = await axios.post(newUrl, data);
@@ -45,6 +47,7 @@ const LoginPopUp = ({ setshowLogin }) => {
 	// useEffect(() => {
 	//   console.log(data);
 	// }, [data]);
+
 
 	return (
 		<div className="login-popup">
